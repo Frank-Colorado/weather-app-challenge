@@ -1,7 +1,14 @@
 // API KEY VARIABLE
 const API_KEY = "c6bc260f8c642aa6780da0d9f526c867";
-// DOM VARIABLES
+// SIDEBAR VARIABLES
 const searchInput = document.getElementById("city-input");
+// CURRENT WEATHER DISPLAY VARIABLES
+const cityName = getElementById("city-name");
+const date = getElementById("date");
+const weatherIcon = getElementById("weather-type");
+const temp = getElementById("temp");
+const humidity = getElementById("humidity");
+const wind = getElementById("wind");
 
 const getWeatherData = async () => {
   try {
@@ -19,7 +26,7 @@ const getWeatherData = async () => {
     });
 
     const data = await currentWeather;
-    console.log(data);
+    currentWeatherDisplay(data);
   } catch (err) {
     console.log("Error", err);
   }
