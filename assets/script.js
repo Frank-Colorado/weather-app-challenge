@@ -1,8 +1,11 @@
+// API KEY VARIABLE
 const API_KEY = "c6bc260f8c642aa6780da0d9f526c867";
+// DOM VARIABLES
+const searchInput = document.getElementById("city-input");
 
 const getWeatherData = async () => {
   try {
-    const city = "tampa";
+    const city = searchInput.value || "Los Angeles";
 
     const currentWeather = new Promise(async (resolve, reject) => {
       try {
