@@ -19,12 +19,14 @@
 
 /* SIDEBAR STYLING */
 
-.recent-search {
+.recent-search li {
   padding: 0.5rem 0px 0.5rem;
   font-size: 1.125rem;
   cursor: pointer;
 }
 
-.recent-search:hover {
+.recent-search li:hover {
   color: #ffd23f;
 }
+
+/* WEATHER DISPLAY SECTION */
