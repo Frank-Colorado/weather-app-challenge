@@ -13,4 +13,18 @@
 
 .banner {
   color: #ffd23f;
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  border-radius: 0.375rem;
+}
+
+/* SIDEBAR STYLING */
+
+.recent-search {
+  padding: 0.5rem 0px 0.5rem;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+.recent-search:hover {
+  color: #ffd23f;
 }
