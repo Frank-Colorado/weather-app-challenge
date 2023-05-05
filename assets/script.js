@@ -59,11 +59,11 @@ const currentWeatherDisplay = (data) => {
 const forecastDisplay = (data) => {
   forecastDiv.innerHTML = "";
 
-  const forecast = data.slice(5);
+  const newData = data.slice(5);
 
-  const forecast5 = forecast.filter((e, i) => i % 8 === 0);
+  const forecast = newData.filter((e, i) => i % 8 === 0);
 
-  forecast5.forEach((day) => {
+  forecast.forEach((day) => {
     const dayCard = document.createElement("div");
     dayCard.classList.add("col", "card", "m-4", "shadow-sm", "weather");
     dayCard.innerHTML = `
