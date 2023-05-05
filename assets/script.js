@@ -1,5 +1,6 @@
 // SIDEBAR VARIABLES
 const searchInput = document.getElementById("city-input");
+const searchesList = document.getElementById("recent-searches");
 // CURRENT WEATHER DISPLAY VARIABLES
 const cityName = document.getElementById("city-name");
 const date = document.getElementById("date");
