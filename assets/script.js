@@ -8,6 +8,8 @@ const weatherIcon = document.getElementById("weather-type");
 const temp = document.getElementById("temp");
 const humidity = document.getElementById("humidity");
 const wind = document.getElementById("wind");
+// FORECAST WEATHER DISPLAY VARIABLES
+const forecastDiv = document.getElementById("forecast");
 
 const getApiData = async (URL) => {
   try {
@@ -33,7 +35,8 @@ const getWeatherData = async (input) => {
     ]);
     displayRecentSearches();
     currentWeatherDisplay(data[0]);
-    forecastDisplay(data[1]);
+    console.log(data[1]);
+    forecastDisplay(data[1].list);
   } catch (error) {
     console.log("Error", error);
   }
@@ -54,7 +57,36 @@ const currentWeatherDisplay = (data) => {
   wind.innerText = data.wind.speed;
 };
 
-const forecastDisplay = (data) => {};
+const forecastDisplay = (data) => {
+  forecastDiv.innerHTML = "";
+  console.log(data);
+  const forecast = data.slice(5);
+  console.log(forecast);
+  const forecast5 = forecast.filter((e, i) => i % 8 === 0);
+  console.log(forecast5);
+  forecast5.forEach((day) => {
+    console.log(day);
+    const dayCard = document.createElement("div");
+    dayCard.classList.add("col", "card", "m-4", "shadow-sm");
+    dayCard.innerHTML = `
+    <div class="card-header">
+    <h4 class="my-0 font-weight-normal">${day.dt_txt}</h4>
+  </div>
+  <div class="card-body">
+  <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
+    <ul class="list-unstyled mt-3 mb-4">
+      <li>Temp: <span id="temp">${(day.main.temp - 273.15).toFixed(
+        2
+      )}</span> °C</li>
+      <li>Humidity: <span id="humidity">${day.main.humidity}</span> %</li>
+      <li>Wind: <span id="wind">${day.wind.speed}</span> MPH</li>
+    </ul>
+  </div>
+</div>
+    `;
+    forecastDiv.appendChild(dayCard);
+  });
+};
 
 const displayRecentSearches = () => {
   searchesList.innerHTML = "";
