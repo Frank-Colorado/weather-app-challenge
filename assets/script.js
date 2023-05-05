@@ -8,6 +8,19 @@ const temp = document.getElementById("temp");
 const humidity = document.getElementById("humidity");
 const wind = document.getElementById("wind");
 
+const getApiData = async (URL) => {
+  try {
+    const response = await fetch(URL);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("This is the Error: ", error);
+  }
+};
+
 const getWeatherData = async () => {
   try {
     const city = searchInput.value || "Los Angeles";
@@ -17,8 +30,7 @@ const getWeatherData = async () => {
       getApiData(currentWeatherURL),
       getApiData(forecastURL),
     ]);
-    console.log(data);
-    // currentWeatherDisplay(data);
+    currentWeatherDisplay(data[0]);
   } catch (error) {
     console.log("Error", error);
   }
