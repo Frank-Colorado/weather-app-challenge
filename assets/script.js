@@ -57,8 +57,12 @@ const forecastDisplay = (data) => {
   console.log(data);
 };
 
-const saveSearchInput = () => {
-  getWeatherData(searchInput.value);
+const getSearchInput = () => {
+  const search = searchInput.value;
+  getWeatherData(search);
+  const recentSearches =
+    JSON.parse(localStorage.getItem("recentSearches")) || [];
+  saveSearchInput(search, recentSearches);
 };
 
 getWeatherData();
