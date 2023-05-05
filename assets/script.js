@@ -70,7 +70,7 @@ const saveSearchInput = (search, searches) => {
 };
 
 const getSearchInput = () => {
-  const newSearch = searchInput.value;
+  const newSearch = searchInput.value.toLowerCase();
   getWeatherData(newSearch);
   const recentSearches =
     JSON.parse(localStorage.getItem("recentSearches")) || [];
