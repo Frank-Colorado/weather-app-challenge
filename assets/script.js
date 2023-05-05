@@ -57,12 +57,27 @@ const forecastDisplay = (data) => {
   console.log(data);
 };
 
+const saveSearchInput = (search, searches) => {
+  if (!searches.includes(search)) {
+    searches.push(search);
+  }
+  if (searches.length > 5) {
+    searches.pop();
+  }
+  console.log(searches);
+  localStorage.setItem("recentSearches", JSON.stringify(searches));
+  return;
+};
+
 const getSearchInput = () => {
-  const search = searchInput.value;
-  getWeatherData(search);
+  const newSearch = searchInput.value;
+  getWeatherData(newSearch);
   const recentSearches =
     JSON.parse(localStorage.getItem("recentSearches")) || [];
-  saveSearchInput(search, recentSearches);
+  console.log(newSearch, recentSearches);
+  saveSearchInput(newSearch, recentSearches);
+  console.log("just returned");
+  //displayRecentSearches();
 };
 
 getWeatherData();
