@@ -10,15 +10,23 @@
   display: none;
 }
 
+body {
+  color: #091f39;
+}
+
 /* HEADER STYLING */
 
 .banner {
-  color: #091f39;
-  border: 1px solid rgba(0, 0, 0, 0.175);
+  border: 1px solid #eef3f3;
   border-radius: 0.375rem;
 }
 
 /* SIDEBAR STYLING */
+
+button {
+  color: #091f39 !important;
+  background-color: #a8b7e2 !important;
+}
 
 .recent-search li {
   padding: 0.5rem 0px 0.5rem;
@@ -27,17 +35,17 @@
 }
 
 .recent-search li:hover {
-  color: #ffd23f;
+  color: #a8b7e2;
 }
 
 /* WEATHER DISPLAY SECTION */
 
-.main-weather {
+.weather {
   background-color: #112b50;
   color: #fafcfe;
 }
 
-.main-weather li {
+.current-weather li {
   font-size: 1.5rem;
   padding: 0.25rem;
 }

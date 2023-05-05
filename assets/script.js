@@ -65,9 +65,9 @@ const forecastDisplay = (data) => {
 
   forecast5.forEach((day) => {
     const dayCard = document.createElement("div");
-    dayCard.classList.add("col", "card", "m-4", "shadow-sm");
+    dayCard.classList.add("col", "card", "m-4", "shadow-sm", "weather");
     dayCard.innerHTML = `
-    <div class="card-header">
+    <div class="">
     <h4 class="my-0 font-weight-normal">${day.dt_txt} PM</h4>
   </div>
   <div class="card-body">
