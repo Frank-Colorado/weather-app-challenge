@@ -40,7 +40,6 @@ const getWeatherData = async (input) => {
 
 //
 const currentWeatherDisplay = (data) => {
-  console.log(data);
   cityName.innerText = data.name;
   date.innerText = new Date(Date.now()).toLocaleString("en-US", {
     weekday: "long",
@@ -54,22 +53,26 @@ const currentWeatherDisplay = (data) => {
   wind.innerText = data.wind.speed;
 };
 
-const forecastDisplay = (data) => {
-  console.log(data);
-};
+const forecastDisplay = (data) => {};
 
-const displayRecentSearches = () => {
+const displayRecentSearches = (searches) => {
+  searchesList.innerHTML = "";
   // This will display recent searches
+  searches.forEach((item) => {
+    const newItem = document.createElement("li");
+    newItem.innerHTML = item.toUpperCase();
+    searchesList.appendChild(newItem);
+  });
 };
 
 const saveSearchInput = (search, searches) => {
   if (!searches.includes(search)) {
     searches.push(search);
   }
+  console.log(searches.length);
   if (searches.length > 5) {
-    searches.pop();
+    searches.shift();
   }
-
   localStorage.setItem("recentSearches", JSON.stringify(searches));
   displayRecentSearches(searches);
 };
