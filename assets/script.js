@@ -1,9 +1,3 @@
-// API KEY VARIABLE
-const API_KEY = "c6bc260f8c642aa6780da0d9f526c867";
-const WEATHERAPI =
-  "https://api.openweathermap.org/data/2.5/weather?q=&appid=c6bc260f8c642aa6780da0d9f526c867";
-const FORECASTAPI =
-  "https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=c6bc260f8c642aa6780da0d9f526c867";
 // SIDEBAR VARIABLES
 const searchInput = document.getElementById("city-input");
 // CURRENT WEATHER DISPLAY VARIABLES
