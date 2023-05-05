@@ -31,6 +31,7 @@ const getWeatherData = async () => {
       getApiData(forecastURL),
     ]);
     currentWeatherDisplay(data[0]);
+    forecastDisplay(data[1]);
   } catch (error) {
     console.log("Error", error);
   }
@@ -51,4 +52,9 @@ const currentWeatherDisplay = (data) => {
   humidity.innerText = data.main.humidity;
   wind.innerText = data.wind.speed;
 };
+
+const forecastDisplay = (data) => {
+  console.log(data);
+};
+
 getWeatherData();
