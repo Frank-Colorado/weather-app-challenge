@@ -100,6 +100,9 @@ const displayRecentSearches = () => {
 };
 
 const saveSearchInput = (search, searches) => {
+  if (search === "") {
+    return;
+  }
   if (!searches.includes(search)) {
     searches.push(search);
   }
