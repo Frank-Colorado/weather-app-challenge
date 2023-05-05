@@ -6,7 +6,11 @@ This is a Weather App which was created to complete my bootcamp's 6th challenge 
 
 ## Visuals
 
+![image](https://user-images.githubusercontent.com/123683792/236580811-c7a43e83-819b-4126-b6c8-bc99c4f20cd1.png)
+
 ## Website URL
+
+https://frank-colorado.github.io/weather-app-challenge/
 
 ## Installation
 
