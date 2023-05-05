@@ -17,7 +17,7 @@ const getApiData = async (URL) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log("This is the Error: ", error);
+    console.error(error);
   }
 };
 
@@ -38,6 +38,17 @@ const getWeatherData = async () => {
 
 //
 const currentWeatherDisplay = (data) => {
+  console.log(data);
   cityName.innerText = data.name;
+  date.innerText = new Date(Date.now()).toLocaleString("en-US", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+  weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  temp.innerText = (data.main.temp - 273.15).toFixed(2);
+  humidity.innerText = data.main.humidity;
+  wind.innerText = data.wind.speed;
 };
 getWeatherData();
