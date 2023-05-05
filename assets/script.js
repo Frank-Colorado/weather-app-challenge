@@ -57,6 +57,10 @@ const forecastDisplay = (data) => {
   console.log(data);
 };
 
+const displayRecentSearches = () => {
+  // This will display recent searches
+};
+
 const saveSearchInput = (search, searches) => {
   if (!searches.includes(search)) {
     searches.push(search);
@@ -64,9 +68,9 @@ const saveSearchInput = (search, searches) => {
   if (searches.length > 5) {
     searches.pop();
   }
-  console.log(searches);
+
   localStorage.setItem("recentSearches", JSON.stringify(searches));
-  return;
+  displayRecentSearches(searches);
 };
 
 const getSearchInput = () => {
@@ -74,10 +78,7 @@ const getSearchInput = () => {
   getWeatherData(newSearch);
   const recentSearches =
     JSON.parse(localStorage.getItem("recentSearches")) || [];
-  console.log(newSearch, recentSearches);
   saveSearchInput(newSearch, recentSearches);
-  console.log("just returned");
-  //displayRecentSearches();
 };
 
 getWeatherData();
