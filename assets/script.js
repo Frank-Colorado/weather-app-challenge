@@ -21,9 +21,9 @@ const getApiData = async (URL) => {
   }
 };
 
-const getWeatherData = async () => {
+const getWeatherData = async (input) => {
   try {
-    const city = searchInput.value || "Los Angeles";
+    const city = input || "Los Angeles";
     const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c6bc260f8c642aa6780da0d9f526c867`;
     const forecastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=c6bc260f8c642aa6780da0d9f526c867`;
     const data = await Promise.all([
@@ -55,6 +55,10 @@ const currentWeatherDisplay = (data) => {
 
 const forecastDisplay = (data) => {
   console.log(data);
+};
+
+const saveSearchInput = () => {
+  getWeatherData(searchInput.value);
 };
 
 getWeatherData();
