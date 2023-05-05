@@ -31,6 +31,7 @@ const getWeatherData = async (input) => {
       getApiData(currentWeatherURL),
       getApiData(forecastURL),
     ]);
+    displayRecentSearches();
     currentWeatherDisplay(data[0]);
     forecastDisplay(data[1]);
   } catch (error) {
@@ -55,11 +56,14 @@ const currentWeatherDisplay = (data) => {
 
 const forecastDisplay = (data) => {};
 
-const displayRecentSearches = (searches) => {
+const displayRecentSearches = () => {
   searchesList.innerHTML = "";
   // This will display recent searches
+  const searches = JSON.parse(localStorage.getItem("recentSearches"));
   searches.forEach((item) => {
     const newItem = document.createElement("li");
+    newItem.id = item;
+    newItem.className = "searchItem";
     newItem.innerHTML = item.toUpperCase();
     searchesList.appendChild(newItem);
   });
@@ -74,7 +78,7 @@ const saveSearchInput = (search, searches) => {
     searches.shift();
   }
   localStorage.setItem("recentSearches", JSON.stringify(searches));
-  displayRecentSearches(searches);
+  return;
 };
 
 const getSearchInput = () => {
@@ -83,6 +87,16 @@ const getSearchInput = () => {
   const recentSearches =
     JSON.parse(localStorage.getItem("recentSearches")) || [];
   saveSearchInput(newSearch, recentSearches);
+  displayRecentSearches();
 };
+
+document.addEventListener("click", function (e) {
+  const target = e.target.closest(".searchItem");
+  if (target) {
+    getWeatherData(target.id);
+  } else {
+    console.log("not the right target");
+  }
+});
 
 getWeatherData();
