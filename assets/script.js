@@ -33,9 +33,8 @@ const getWeatherData = async (input) => {
       getApiData(currentWeatherURL),
       getApiData(forecastURL),
     ]);
-    displayRecentSearches();
+    //displayRecentSearches();
     currentWeatherDisplay(data[0]);
-    console.log(data[1]);
     forecastDisplay(data[1].list);
   } catch (error) {
     console.log("Error", error);
@@ -59,18 +58,17 @@ const currentWeatherDisplay = (data) => {
 
 const forecastDisplay = (data) => {
   forecastDiv.innerHTML = "";
-  console.log(data);
+
   const forecast = data.slice(5);
-  console.log(forecast);
+
   const forecast5 = forecast.filter((e, i) => i % 8 === 0);
-  console.log(forecast5);
+
   forecast5.forEach((day) => {
-    console.log(day);
     const dayCard = document.createElement("div");
     dayCard.classList.add("col", "card", "m-4", "shadow-sm");
     dayCard.innerHTML = `
     <div class="card-header">
-    <h4 class="my-0 font-weight-normal">${day.dt_txt}</h4>
+    <h4 class="my-0 font-weight-normal">${day.dt_txt} PM</h4>
   </div>
   <div class="card-body">
   <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
@@ -105,7 +103,7 @@ const saveSearchInput = (search, searches) => {
   if (!searches.includes(search)) {
     searches.push(search);
   }
-  console.log(searches.length);
+
   if (searches.length > 5) {
     searches.shift();
   }
@@ -126,8 +124,6 @@ document.addEventListener("click", function (e) {
   const target = e.target.closest(".searchItem");
   if (target) {
     getWeatherData(target.id);
-  } else {
-    console.log("not the right target");
   }
 });
 
